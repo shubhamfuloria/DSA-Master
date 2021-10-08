@@ -2,11 +2,11 @@
 
 bool hasPathSum(node* root, int target)
 {
-    if(target == 0 and root == nullptr)
-        return true;
-    
     if(root == nullptr)
         return false;
+    
+    if(root->left == nullptr and root->right == nullptr)
+        return target - root->val == 0;
 
     bool left_ans = hasPathSum(root->left, target - root->val);
     bool right_ans = hasPathSum(root->right, target - root->val);

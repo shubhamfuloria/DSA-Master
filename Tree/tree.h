@@ -16,3 +16,13 @@ public:
         right = nullptr;
     }
 };
+
+void inorderTraversal(node *root)
+{
+    if (root == nullptr)
+        return;
+
+    inorderTraversal(root->left);
+    cout << root->val << "  ";
+    inorderTraversal(root->right);
+}

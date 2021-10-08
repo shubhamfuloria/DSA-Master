@@ -1,4 +1,3 @@
-    if(isBalanced(root))
-        cout << "YES ! It is a balanced binary tree." << endl;
-    else
-        cout << "NOPE! It is not a balanced binary tree." << endl;
+
+    // root->left = right_inverted_tree;
+    // root->right = left_inverted_tree;
