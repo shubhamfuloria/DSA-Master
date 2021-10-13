@@ -20,6 +20,9 @@ bool isBalanced(node *root)
     int right_height = getHeight(root->right);
 
     bool curr_node_ans = abs(left_height - right_height) <= 1;
+
+    if(curr_node_ans == false)   return false; //to reduce complexity
+
     bool left_tree_ans = isBalanced(root->left);
     bool right_tree_ans = isBalanced(root->right);
 
@@ -28,11 +31,8 @@ bool isBalanced(node *root)
 
 int main()
 {
-    node *root = new node(3);
-    root->left = new node(9);
-    root->right = new node(20);
-    root->right->left = new node(15);
-    root->right->right = new node(7);
+    node *root = new node(1);
+    root->right = new node(2);
 
     if (isBalanced(root))
         cout << "YES ! It is a balanced binary tree." << endl;
