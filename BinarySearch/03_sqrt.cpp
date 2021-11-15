@@ -1,47 +1,43 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-double multiply(double number, double times)
+/*
+Aproach:
+1. We are sure that the square root of any number x will lie between 0 and x
+2. So our initial search space will be 0 to X
+3. We are required to return only integer part of the squqre root
+4. So we will shrink our search space until there is only one element left, and that will be our answer
+*/
+
+
+int sqrt(int x)
 {
-    double r = 1.0;
+    double low = 0, high = x;
 
-    for (int i = 1; i <= times; i++)
-        r *= number;
-
-    return r;
-}
-double get_nth_root(int n, int m)
-{
-    double low = 0, high = m;
-    double eps = 1e-6;
-
-    while (high - low > eps)
+    while((int)low != (int) high)
     {
-        double mid = (low + high) / 2.0;
-        double curr = multiply(mid, n);
+        double mid = low + (high - low) / 2.0;
 
-        if(curr == m)
-            return curr;
-
-        else if (curr < m)
+        if(mid * mid == x) 
+            return mid;
+        
+        else if(mid * mid < x) //still mid may be our answer
             low = mid;
-
+        
         else
-            high = mid;
+            high = mid; //here mid can not be our answer but still we are including mid in search space 
+                        //'cause our answer can lie in range [mid - 1, mid]
+                        //if we discard mid also then we won't be able to get our answer
     }
-    cout << low << "\t" << high << endl;
-    return low;
+    return (int)low;//At this point (int) low and (int) high will be same (termination condition)
+                    //so it doesn't matter if we return low or high
 }
+
 int main()
 {
-    int x = 63;
+    //return the integer part of squre root
+    int x = 1;
+    cout << sqrt(x) << endl;
 
-    cout << get_nth_root(2, x) << endl;
 }
-
-/*
-We are just shrinking the search space from [1-M] to [K.something - K.something] and trying to reach the nearest ans
-binart Search is really beautiful
-
-*/
