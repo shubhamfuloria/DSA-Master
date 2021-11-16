@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -20,26 +20,26 @@ int getMinDiff(vector<int> &A, int target)
 {
     int start = 0, end = A.size() - 1;
 
-    while(start <= end)
+    while (start <= end)
     {
         int mid = start + (end - start) / 2;
 
-        if(target == A[mid])
+        if (target == A[mid])
             return A[mid];
-        
-        else if(A[mid] < target)
+
+        else if (A[mid] < target)
             start = mid + 1;
-        
-        else if(target < A[mid])
+
+        else if (target < A[mid])
             end = mid - 1;
     }
     //at this point start and end will be pointing to floor and ceil index of element (or -1 and n(size of array))
-    if(start == A.size())   //that means there is no value which is greater than target
+    if (start == A.size()) //that means there is no value which is greater than target
         return abs(A[end] - target);
-    
-    else if(end == -1) // that means there is no value which is lesser than target
+
+    else if (end == -1) // that means there is no value which is lesser than target
         return abs(A[start] - target);
-    
+
     //if our code reaches here, then we can assure there exists a floor and ceil value of target at valid index
     return abs(A[start] - target) > abs(A[end] - target) ? abs(A[end] - target) : abs(A[start] - target);
 }
