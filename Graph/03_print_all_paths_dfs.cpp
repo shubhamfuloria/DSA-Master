@@ -17,7 +17,7 @@ public:
 
 void printAllPaths(vector<Edge> graph[], int src, int dest, vector<bool> visited, string psf)
 {
-  if(src == dest)
+  if (src == dest)
   {
     cout << psf << endl;
     return;
@@ -25,9 +25,9 @@ void printAllPaths(vector<Edge> graph[], int src, int dest, vector<bool> visited
 
   visited[src] = true;
 
-  for(auto edge : graph[src])
+  for (auto edge : graph[src])
   {
-    if(visited[edge.dest] == false) 
+    if (visited[edge.dest] == false)
     {
       printAllPaths(graph, edge.dest, dest, visited, psf + to_string(edge.dest));
     }
